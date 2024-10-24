@@ -17,7 +17,52 @@
         >
       </div>
       <!-- appContent -->
-      <div class="container max-w-sm mx-auto"></div>
+      <div class="container max-w-sm mx-auto">
+        <!-- category form -->
+        <div class="mt-6">
+          <h2 class="text-xl text-slate-300 font-bold mb-2">
+            Add New category
+          </h2>
+          <form class="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
+            <div>
+              <label class="block mb-1 text-slate-400" for="category-title"
+                >title</label
+              >
+              <input
+                type="text"
+                name="category-title"
+                id="category-title"
+                class="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+              />
+            </div>
+            <div>
+              <label
+                class="block mb-1 text-slate-400"
+                for="category-description"
+                >description</label
+              >
+              <textarea
+                class="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
+                type="text"
+                name="category-description"
+                id="category-description"
+              ></textarea>
+            </div>
+            <div class="flex justify-between items-center gap-x-4">
+              <button
+                class="flex-1 border border-slate-400 text-slate-300 rounded-xl py-2"
+              >
+                Cancel
+              </button>
+              <button
+                class="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
+              >
+                Add New category
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>
