@@ -18,6 +18,8 @@ class CategoryView {
     this.categories = Storage.getAllCategoryies();
     //update DOM:
     this.createdCategoryList();
+    Cattitle.value = "";
+    Catdescription.value = "";
   }
 
   setApp() {
