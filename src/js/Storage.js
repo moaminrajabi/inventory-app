@@ -39,12 +39,34 @@ export default class Storage {
   //save category
   //get All category
 
+  // category
   static getAllCategoryies() {
     //products an dcategory --> save on localStorage
-    const savedCategoryies = JSON.parse(localStorage.getItem("category")) || [];
+    const savedCategories = JSON.parse(localStorage.getItem("category")) || [];
     //sort => des:
-    savedCategoryies.sort((a, b) => {
-      return a > b ? -1 : 1;
+    const sortedCategories = savedCategories.sort((a, b) => {
+      return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
     });
+    return sortedCategories;
   }
+
+  static saveCategory(categoryToSave) {
+    // edit or new
+    const sevedCategories = Storage.getAllCategoryies();
+
+    const existedItem = sevedCategories.find((c) => c.id === categoryToSave.id);
+
+    if (existedItem) {
+      // Edit:
+      existedItem.title = categoryToSave.title;
+      existedItem.description = categoryToSave.description;
+    } else {
+      categoryToSave.id = new Date().getTime();
+      categoryToSave.createdAt = new Date().toISOString();
+      sevedCategories.push(categoryToSave);
+    }
+
+    localStorage.setItem("category", JSON.stringify(sevedCategories));
+  }
+  
 }
