@@ -92,5 +92,6 @@ export default class Storage {
       sevedProducts.push(ProductToSave);
     }
     localStorage.setItem("products", JSON.stringify(sevedProducts));
+    console.log(3);
   }
 }
