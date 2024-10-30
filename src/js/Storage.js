@@ -68,5 +68,29 @@ export default class Storage {
 
     localStorage.setItem("category", JSON.stringify(sevedCategories));
   }
-  
+
+  // product
+  static getAllProduct() {
+    const savedproducts = JSON.parse(localStorage.getItem("products")) || [];
+    const sortedProducts = savedproducts.sort((a, b) => {
+      return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
+    });
+    return sortedProducts;
+  }
+
+  static saveProducts(ProductToSave) {
+    const sevedProducts = Storage.getAllProduct();
+    const existedItem = sevedProducts.find((p) => p.id === ProductToSave.id);
+    if (existedItem) {
+      // Edit:
+      existedItem.title = ProductToSave.id;
+      existedItem.quantity = ProductToSave.quantity;
+      existedItem.category = ProductToSave.category;
+    } else {
+      ProductToSave.id = new Date().getTime();
+      ProductToSave.createdAt = new Date().toISOString();
+      sevedProducts.push(ProductToSave);
+    }
+    localStorage.setItem("products", JSON.stringify(sevedProducts));
+  }
 }
